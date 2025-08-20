@@ -1,0 +1,163 @@
+/* ===============================
+   Responsive layout ≤768px
+   =============================== */
+
+@media screen and (max-width: 768px) {
+  /* 🧭 NAV + HERO */
+  .hero {
+    padding: 5rem 1rem 2rem; /* ↑ Espacio extra para separar del nav */
+    height: auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .banner_title {
+    margin-top: 2rem; /* ↑ Separación visual del nav */
+  }
+
+  .banner_title h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 🧾 FORMULARIO */
+  .booking-box {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem auto;
+    box-shadow: none;
+  }
+
+  .reservation-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* 🎯 Botones de clase en vertical */
+.class-selection {
+  display: flex;
+  flex-direction: row;
+  gap: 0; /* ← Elimina espacios entre botones */
+  width: 100%; /* ← Igual ancho que el botón de reservar */
+  border-radius: 6px;
+  overflow: hidden; /* ← Para que los bordes no se desborden */
+}
+
+.class-selection button {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 1px;
+  /*border-right: 1px solid #ccc;  ← Separador visual */
+  /* background-color: var(--primary-bg); */
+  /* color: #fff; */
+  text-align: center;
+}
+
+.class-selection button:last-child {
+  border-right: none; /* ← Elimina borde del último botón */
+}
+
+  /* Etiquetas alineadas a la izquierda */
+  .group label {
+    text-align: left;
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .group {
+    width: 100%;
+  }
+
+  .area {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .passenger-select,
+  .shipping-data {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .theme-toggle {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  /* 🧾 SUBTÍTULO + SERVICIOS */
+  .sub-title {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .sub-title h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sub-title p {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+  }
+
+  .services-experience {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .imagen-servicio {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .imagen-servicio img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .info-services {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .service {
+    padding: 1rem;
+    border-top: 4px solid var(--secondary-bg);
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+  .service h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}

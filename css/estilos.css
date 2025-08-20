@@ -1,0 +1,495 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Fuentes tipográfica local */
+@font-face {
+    font-family: 'POLAROID';
+    src: url(/Idat/Diseño_web/Proyecto/AeroPeru/Fuente/polaroid_2/POLAROID.otf);
+}
+
+/*====================================configuracion de variables, paleta de colores====================================*/
+:root {
+    --header-height: 3.5rem;
+
+    --primary-bg: #e2e2e2;    /*Fondo principal*/
+    --secondary-bg: #9D1915;    /*fondo secundario*/
+    --tertiary-bg: #1F1F1F;  /* Fondo nav oscuro, elegante */
+
+    --glass-bg: rgba(79, 79, 79 0.8);
+    /* --color:rgb(79, 79, 79); */
+
+    /*---------------------------------- colores de acento ----------------------------------*/
+    --accent-primary: #F4C095;    /*acento primario - Naranja quemado: ideal para botones, hover o CTA*/
+    --accent-secondary: #007FB2;    /*acento secundario - Azul petróleo: útil para íconos, enlaces activos o tabs*/
+
+    /*---------------------------------- colores para texto ----------------------------------*/
+    --text-primary: #2E2E2E;       /* Gris oscuro, legible sobre fondo claro */
+    --text-secondary: #F8F6F4;     /* Blanco cálido, ideal sobre fondos oscuros */
+    --text-tertiary: #707070;      /* Gris medio, para texto auxiliar o desactivado */
+
+    /*---------------------------------- gradientes ----------------------------------*/
+    --gradient-primary: linear-gradient(135deg, #9D1915, #F4C095);     /* Rojo → Naranja */
+    --gradient-secondary: linear-gradient(135deg, #007FB2, #F4C095);  /* Azul → Naranja */
+
+
+    /*---------------------------------- fuentes y tipografias ----------------------------------*/
+    --body-font: "Montserrat", sans-serif;
+    --normal-font-size: .938rem;
+    /* 15px */
+
+    /* tamaño de fuente */
+    --font-regular: 400;
+    --font-semi-bold: 600;
+
+    --nav-height: 60px;    /**/
+    --transition-speed: 0.3s;    /**/
+
+    /* z index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+}
+
+/*configuracion de tipografia, tamaño de letra*/
+.title {  
+  font-family: 'POLAROID';
+  /*font-size: 45px; - tamaño*/
+  
+}
+
+/* tipografia responsiva */
+@media screen and (min-width: 1024px) {
+    :root {
+        --normal-font-size: 1rem;/* 16px */
+    }
+
+}
+
+/*configuracion base*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* * tipografia, color de fondo, texto manejo de desbordamiento*/
+
+body{
+    
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+
+    background-color: #9e9e9e;
+    /* background-color: var(--primary-bg); */
+    color: var(--text-primary);
+    
+    overflow-x: hidden;/*evita el desbordamiento horizontal*/
+    overflow-y: auto;
+    transition: all 0.3s ease; /*transicion suave*/
+}
+
+ul{
+    list-style: none; /*elimina los marcadores (viñetas, números, etc.)*/
+}
+
+a {
+    text-decoration: none;  /*elimina el subrayado de los enlaces*/
+}
+
+
+/*====================================toggle - botom primario====================================*/
+
+.theme-toggle{
+    background: var(--secondary-bg);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: var(--primary-bg);
+    font-weight: bold;
+    cursor: pointer;/**cambiar el cursor al pasar por encima*/
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover{
+    transform: scale(1.05);/*efecto de escala al pasar el cursor*/
+    box-shadow: var(--accent-primary);
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    border: 1.5px solid #000;
+}
+
+.nav__login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-item {
+  width: 100%;
+  text-align: center;
+}
+
+.login-bg{
+  background: var(--secondary-bg);
+}
+
+/* ============================================================== Hero a pantalla completa ======================================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  animation: carousel 50s infinite;
+  transition: background-image 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 120px 2rem 2rem 120px;
+  z-index: 1; /* ✅ menor que el modal (Bootstrap usa 1055) */
+}
+
+/* Capa oscura que cubre todo el fondo */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  pointer-events: none; /* ← Esto evita que bloquee clics */
+}
+
+
+/* Hero content estilizado */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 800px;
+  color: var(--text-primary);
+}
+
+/* Título personalizado */
+.banner_title {
+  font-family: 'POLAROID';
+  text-align: left;/* alineación izquierda */  
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Párrafo descriptivo */
+.text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  /*text-align: left;  alineación izquierda */
+  
+  font-family: var(--font-semi-bold);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  max-width: 700px;
+  padding-right: 2rem;
+}
+
+
+/* ===============Booking============== */
+
+/*bookingBox- contenedor*/
+.booking-box {
+  background-color: var(--primary-bg); /*color de fondo del contenedor*/
+  color: var(--text-primary);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: calc(100% - 4rem);
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* 🧾 Formulario agrupado en bloques verticales */
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+/* Grupo Selección: botones de clase + pasajeros */
+.selection {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* ✅ Distribución hacia extremos */
+  width: 100%;
+}
+
+/* Botones de clase */
+.class-selection {
+  display: flex;
+  padding: 0;
+  width: 60%;
+  gap: 0;
+  
+}
+
+.class-option {  
+  flex: 1;
+  border: 1.5px solid #000;;
+  border-radius: 0px;
+
+  background-color: var(--secondary-bg);
+  color: var(--primary-bg);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  white-space: nowrap;
+}
+.class-option:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.class-option:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+.class-option:hover {
+  background-color: var(--primary-bg);
+  color: var(--secondary-bg);
+}
+
+/*seleccion etiquetas*/
+
+/* Grupo Datos de Embarque: origen, destino, fechas, botón */
+.shipping-data {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;/* Alineación horizontal */
+  width: 100%;
+}
+
+/* Botón “Reservar ahora” alineado a la derecha */
+.shipping-data .group:last-child {
+  margin-left: auto;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+.group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-primary);
+}
+
+/* 📝 Campos de texto */
+.group input[type="text"],
+.group input[type="date"] {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+
+/* Campo select de pasajeros */
+.passenger-select {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  /* ✅ Mueve a la derecha */
+}
+
+/* 📝 Campos input/select */
+.area {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  width: 130px;
+  min-width: 120px;
+}
+
+/*=======*/
+
+/*titulosub*/
+.sub-title {
+  color: var(--text-primary);
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+  z-index: 1;
+}
+
+.sub-title h2 {
+  /* font-size: 2.5rem; */
+  font-family:'POLAROID';
+  /* color: var(--text-primary); */
+}
+
+.sub-title p {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/*==============EXPERIENCIAS=========== */
+.services-experience {
+  background-color: var(--primary-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  width: calc(100% - 4rem);
+  max-width: 1200px;
+  margin: 2rem auto;
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* Tarjetas informativas alineadas a la izquierda */
+.info-services {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Tarjeta individual */
+.service {
+  background-color: var(--primary-bg);
+  padding: 1rem;
+  border-left: 4px solid var(--secondary-bg);
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.service h3 {
+  font-size: 1.1rem;
+  color: var(--secondary-bg);
+  margin-bottom: 0.4rem;
+  font-family: var(--body-font);
+}
+
+.service p {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-family: var(--body-font);
+}
+
+/* Imagen decorativa alineada a la derecha */
+.imagen-servicio {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagen-servicio img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* contenedor de imagen */
+.img__container {
+  width: 50%;
+  max-width: 1200px; /* o el ancho máximo que desees */
+  margin: 0 auto;
+  position: relative;
+}
+
+.responsive__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ================== estilos de iconos====================== */
+.icon{
+    font-size: 2.5rem;       /* Tamaño del ícono */
+  color: var(--secondary-bg); /* Azul petróleo, según tu sistema */
+  margin-bottom: 1rem;     /* Espacio debajo del ícono */
+  display: block;          /* Asegura que se alinee como bloque */
+  text-align: center;
+}
+/* solo para alineacion a la izquierda */
+.icon-container {
+  display: flex;
+  justify-content: flex-start; /* alinea todo a la izquierda */
+  align-items: center; /* opcional: alinea verticalmente */
+}
+
+
+
+
+/* 🎞️ Carousel animado para fondo hero */
+@keyframes carousel {
+  0% {
+    background-image: url('../Img/header/img1 - 1280x853.jpg');
+  }
+
+  10% {
+    background-image: url('../Img/header/img1 - 1280x853.jpg');
+  }
+
+  20% {
+    background-image: url('../Img/header/img2 - 1280x853.jpg');
+  }
+
+  30% {
+    background-image: url('../Img/header/img3 - 1280x853.jpg');
+  }
+
+  40% {
+    background-image: url('../Img/header/img4 - 1280x853.jpg');
+  }
+
+  50% {
+    background-image: url('../Img/header/img5 - 1280x853.jpg');
+  }
+
+  60% {
+    background-image: url('../Img/header/img6 - 1280x853.jpg');
+  }
+
+  70% {
+    background-image: url('../Img/header/img7 - 1280x853.jpg');
+  }
+
+  80% {
+    background-image: url('../Img/header/img8 - 1280x853.jpg');
+  }
+
+  90% {
+    background-image: url('../Img/header/img9 - 1280x853.jpg');
+  }
+
+  100% {
+    background-image: url('../Img/header/img1 - 1280x853.jpg');
+  }
+}

@@ -1,0 +1,430 @@
+    /*--primary-bg: #e2e2e2;    /*Fondo principal*/
+    /*--secondary-bg: #9D1915;    /*fondo secundario*/
+    /*--tertiary-bg:#1F1F1F;  /* Fondo nav oscuro, elegante */
+    /*--glass-bg: rgba(79, 79, 79 0.8);
+    /* --color:rgb(79, 79, 79); */
+
+    /*---------------------------------- colores de acento ----------------------------------*/
+    /*--accent-primary: #F4C095;    /*acento primario - Naranja quemado: ideal para botones, hover o CTA*/
+    /*--accent-secondary: #007FB2;    /*acento secundario - Azul petróleo: útil para íconos, enlaces activos o tabs*/
+
+    /*---------------------------------- colores para texto ----------------------------------*/
+    /*--text-primary: #2E2E2E;       /* Gris oscuro, legible sobre fondo claro */
+    /*--text-secondary: #F8F6F4;     /* Blanco cálido, ideal sobre fondos oscuros */
+    /*--text-tertiary: #707070;      /* Gris medio, para texto auxiliar o desactivado */
+
+    /*---------------------------------- gradientes ----------------------------------*/
+    /*--gradient-primary: linear-gradient(135deg, #9D1915, #F4C095);     /* Rojo → Naranja */
+    /*--gradient-secondary: linear-gradient(135deg, #007FB2, #F4C095);  /* Azul → Naranja */
+
+
+/* ====================================Clases CSS reutilizables ====================================*/
+.container {
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+    /**/
+    /*cdisplay: flex; ontenedor flexible para la navegacion horizontal*/
+    /*justify-content: space-between;expacio entre elementos*/
+    /* align-items: center; */
+    /*padding: 1rem 2rem; espacio interno*/
+    max-width: 1400px; /*ancho maximo*/
+    margin: 0 auto; /*centrar el contenedor*/
+}
+
+/*====================HEADER=================*/
+.header{
+    position: fixed;/*posicion fija en la parte superior*/
+    top: 0;
+    left: 0;
+    width: 100%;    
+    background-color: var(--tertiary-bg);/*fondo semi-transparente*/
+    /*backdrop-filter: blur(4px); efecto de desenfoque*/
+    
+    /* box-shadow: 0 2px 16px hsla(220, 32%, 8%, .3); */
+
+    z-index: var(--z-fixed); /*asegura que este por encima de otros elementos*/
+
+
+    /*background: rgba(51, 51, 51 0.8); fondo semi-transparente*/
+
+    
+    /* border-bottom: 0.5px solid var(--glass-bg); borde inferior */
+    transition: all 0.3s ease; /*transicion suave*/
+
+}
+
+/*====================================Nav====================================*/
+.nav{
+    height: var(--header-height);
+}
+
+.nav__logo,
+.nav__burger,
+.nav__close {
+    color: var(--primary-bg);  /* color de los elementos de navegación */
+}
+
+.nav__data {
+    /* height: 100%; */
+    display: flex;
+    justify-content: space-between; /* distribuye el espacio entre los elementos */
+    align-items: center;    /* centra los elementos verticalmente */
+}
+
+.nav__logo {
+    display: inline-flex;
+    align-items: center;    /* centra el logo verticalmente */
+    column-gap: .25rem; /* espacio entre el logo y el texto */
+    /* font-weight: var(--font-semi-bold); peso de la fuente del logo */
+}
+
+.nav__logo i {
+    /* font-weight: initial;   peso de la fuente del icono del logo */
+    font-size: 1.25rem; /* tamaño del icono del logo */
+}
+
+.nav__toggle {
+    position: relative; /* posición relativa para el botón de menú */
+    width: 32px; /* ancho del botón de menú */
+    height: 32px; /* alto del botón de menú */;
+}
+
+.nav__burger,
+.nav__close {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    inset: 0;   /* posiciona el icono en el centro del botón */
+    margin: auto;
+    font-size: 1.25rem; /* tamaño del icono */
+    cursor: pointer;    /* cambia el cursor al pasar sobre el icono */
+    transition: opacity .1s, transform .4s;
+
+}
+
+.nav__close {
+    opacity: 0; /* oculta el icono de cerrar por defecto */
+}
+
+.dropdown__subitem:hover .dropdown__submenu {
+    max-height: 1000px;
+}
+
+
+/* ============NAVEGACION PARA DISPOSITIVOS MOVILES============= */
+/**/
+@media (max-width: 768px) {
+  .login-item {
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  .theme-toggle {
+    margin: 0 auto;
+    display: inline-block;
+  }
+}
+/**/
+/* ==================================== Navegación para dispositivos móviles==================================== */
+@media screen and (max-width: 1118px) {
+    
+    /**/
+    .nav__link.Right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+    }
+    
+        .nav__link.Right>li {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+        /* Estilo específico para el botón */
+    .nav__link.Right>button {
+        align-self: flex-start;
+        width: auto;
+        max-width: 180px;
+        padding: 0.5rem 1rem;
+        white-space: nowrap;
+        font-size: 0.85rem;
+    }
+
+    .nav__menu {
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 100%;
+
+        height: calc(100vh - 3.5rem);/* altura del menú móvil */
+
+        overflow: auto; /* permite el desplazamiento si el contenido es mayor que la altura del menú */
+        pointer-events: none;/*evita la interacción con el menú cuando está oculto */
+        opacity: 0; /* oculta el menú por defecto */
+
+        transition: top .4s, opacity .3s;
+        
+    }
+
+    .nav__menu::-webkit-scrollbar /**/ {
+        width: 0;
+    }
+
+    .nav__list{
+        background-color: var(--tertiary-bg);
+        padding-top: 1rem; /* espacio superior del menú */
+    }
+    
+    /* sub menu */
+    .show-submenu {
+        max-height: 1000px;
+        transition: max-height .4s ease-in;
+    }
+
+}
+
+/*no se aplica colores o efectos al logo porque es una imagen*/
+.nav__link{
+    color: var(--primary-bg); /*color de texto del nav*/
+    background-color: var(--tertiary-bg);
+    font-weight: var(--font-semi-bold); /*peso de la fuente medio*/
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* transition: all 0.3s ease; */
+    transition: background-color .3s; /* transición suave para el color de fondo y el color del texto */
+    text-decoration: none; /*sin subrayado*/
+    
+}
+
+.nav__link:hover{
+    color: var(--secondary-bg); /* color de texto al pasar el ratón */
+    transform: translateY(-2px); /*efecto de elevacion al pasar el cursor*/
+}
+
+/* ==================================== Mostrar menú ==================================== */
+.show-menu{
+    opacity: 1; /* muestra el menú */
+    top: 3.5rem; /* posiciona el menú debajo del header */
+    pointer-events: initial; /* permite la interacción con el menú */
+}
+
+/* ==================================== Muestra icono ==================================== */
+.show-icon .nav__burger{
+    opacity: 0; /* oculta el icono de menú */
+    transform: rotate(90deg); /* rota el icono */
+}
+.show-icon .nav__close{
+    opacity: 1; /* muestra el icono de cerrar */
+    transform: rotate(90deg); /* rota el icono de cerrar */
+}
+
+/* menú desplegable - dropdown */
+.dropdown-item{
+    cursor: pointer;
+    background-color: var;
+}
+
+/* ==================================== Menú desplegable - dropdown ==================================== */
+.dropdown__item{
+    cursor: pointer;
+}
+
+.dropdown__arrow{
+    font-size: 1.25rem;/* tamaño del icono de flecha */
+    font-weight: initial; /* peso de la fuente del icono de flecha */
+    transition: transform .4s; /* transición suave para la rotación de la flecha */
+}
+
+.dropdown__link, .dropdown__sublink{
+    padding: 1.25rem 1.25rem 1.25rem 2.25rem ; /* espacio interno de los enlaces del dropdown */
+    color: var(--primary-bg); /* color de los enlaces del dropdown */
+    background-color: var(--tertiary-bg); /*color de fondo del dropdown*/
+    backdrop-filter: blur(10px);/**efecto de desenfoque*/
+
+    display: flex;
+    align-items: center; /* centra los enlaces del dropdown verticalmente */
+    column-gap: .5rem; /* espacio entre el icono y el texto del enlace */
+    font-weight: var(--font-semi-bold);
+    transition: background-color .3s; /* transición suave para el color de fondo */
+}
+
+.dropdown__link i, .dropdown__sublink i{
+    font-size: 1.25rem;
+    font-weight: initial;
+    }
+
+.dropdown__link:hover, .dropdown__sublink:hover{
+    color: var(--secondary-bg);
+}
+
+.dropdown__menu, .dropdown__submenu{
+    max-height: 0;
+    overflow: hidden; /* oculta el contenido del dropdown por defecto */
+    transition: max-height .4s ease-out; /* transición suave para la altura del dropdown */
+}
+
+/* ==================================== mostrar el menú desplegable y el submenú ==================================== */
+
+.dropdown__item:hover .dropdown__menu,
+.dropdown__subitem:hover/* .dropdown__submenu > */.dropdown__submenu{
+    max-height: 1000px; /* muestra el contenido del dropdown al pasar el ratón*/
+    transition: max-height .4s ease-in; /*transición suave para mostrar el contenido */
+}
+/**/
+
+/* icono de rotación desplegable */
+.dropdown__item:hover .dropdown__arrow{
+    transform: rotate(180deg); /* rota el icono de flecha al pasar el ratón */
+}
+
+/* ==================================== submenú desplegable ==================================== */
+.dropdown__add{
+    margin-left: auto; /* alinea el icono de añadir a la derecha */
+}
+
+.dropdown__sublink{
+    background-color: var(--tertiary-bg); /* color de fondo del submenú */
+}
+
+/* ==================================== puntos de interrupción - breakpoints ==================================== */
+/* para dispositivos pequeños */
+
+@media screen and (max-width:340px){
+    .container{
+        margin-inline: 1rem; /* reduce el margen para dispositivos pequeños */
+    }
+    .nav__link{
+        padding-inline: 1rem;/* reduce el espacio interno de los enlaces */
+    }
+}
+
+/* ==================================== para dispositivos grandes==================================== */
+@media screen and (min-width: 1118px) {
+    /*alineadcion de items*/
+    .nav__menu {
+    background: var(--tertiary-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    gap: 2rem;
+    margin-left: 2rem; /* separa del logo */
+}
+
+.Left,
+.Right {
+    display: flex;
+    gap: 1rem;
+}
+
+.Right {
+    margin-left: auto;
+    padding: 1rem;
+    background: var(--tertiary-bg);
+} 
+
+
+/*espaciado a la derecha */
+.nav__link.Right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* */
+    margin-left: auto;
+}
+
+.nav__link i {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.nav__link.Right>li,
+.nav__link.Right>button {
+    display: flex;
+    align-items: center;
+}
+/**/
+
+    .container{
+        margin-inline: auto; /* centra el contenido en dispositivos grandes */
+    }
+    .nav{
+        height: calc(var(--header-height) + 2rem); /* aumenta la altura del header */
+        display: flex; /* utiliza flexbox para alinear los elementos */
+        justify-content: space-between; /* distribuye el espacio entre los elementos */
+    }
+    .nav__toggle{
+        display: none; /* oculta el botón de menú en dispositivos grandes */
+    }
+
+    .Left{
+        height: 100%; /* altura del menú en dispositivos grandes */
+        display: flex;
+        column-gap: 3rem;
+
+    }
+
+    .nav__link{
+        height: 100%; /* altura de los enlaces del menú */
+        padding: 0;
+        justify-content: initial; /* alinea los enlaces del menú */
+        column-gap: .25rem; /* espacio entre el icono y el texto del enlace */
+    }
+
+    .nav__link:hover{
+        background-color: transparent;/* elimina el color de fondo al pasar el ratón */
+
+    }
+
+    .dropdown__item, .dropdown__subitem{
+        position: relative; /* posición relativa para el dropdown */
+    }
+
+    .dropdown__menu, .dropdown__submenu{
+        max-height: initial;
+        overflow: initial;
+        position: absolute;
+        left: 0;
+        top: 6rem;
+
+        opacity: 0; /* muestra el contenido del dropdown */
+        pointer-events: none; /* */
+
+        transition: opacity .3s top .3s; /* transición suave para la opacidad */
+    }
+
+    .dropdown__link, .dropdown__sublink{
+        padding-inline: 1rem 3.5rem; /* espacio interno de los enlaces del dropdown */;
+    }
+
+    .dropdown__subitem .dropdown__link{
+        padding-inline: 1rem;
+
+    }
+
+    .dropdown__submenu{
+        position: absolute;
+        left: 100%;
+        top: .5rem; /* posiciona el submenú a la derecha del elemento padre */
+    }
+
+    /* ==================================== mostrar el menú desplegable ==================================== */
+    .dropdown__item:hover .dropdown__menu{
+        opacity: 1;
+        top: 5.5rem; /*posiciona el menú desplegable debajo del enlace*/
+        pointer-events: initial; /* permite la interacción con el menú desplegable*/
+        transition: top .3s;
+    }
+
+    /* ==================================== mostrar submenú desplegable ==================================== */
+    .dropdown__subitem:hover > .dropdown__submenu{
+        opacity: 1;
+        top:0;
+        pointer-events: initial;
+        transition: top .3s; /*permite la interacción con el submenú desplegable*/
+    }
+}

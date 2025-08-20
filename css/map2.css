@@ -1,0 +1,86 @@
+:root {
+    --header-height: 3.5rem;
+
+    --primary-bg: #e2e2e2;    /*Fondo principal*/
+    --secondary-bg: #9D1915;    /*fondo secundario*/
+    --tertiary-bg: #1F1F1F;  /* Fondo nav oscuro, elegante */
+
+    --glass-bg: rgba(79, 79, 79 0.8);
+    /* --color:rgb(79, 79, 79); */
+
+    /*---------------------------------- colores de acento ----------------------------------*/
+    --accent-primary: #F4C095;    /*acento primario - Naranja quemado: ideal para botones, hover o CTA*/
+    --accent-secondary: #007FB2;    /*acento secundario - Azul petróleo: útil para íconos, enlaces activos o tabs*/
+
+    /*---------------------------------- colores para texto ----------------------------------*/
+    --text-primary: #2E2E2E;       /* Gris oscuro, legible sobre fondo claro */
+    --text-secondary: #F8F6F4;     /* Blanco cálido, ideal sobre fondos oscuros */
+    --text-tertiary: #707070;      /* Gris medio, para texto auxiliar o desactivado */
+
+    /*---------------------------------- gradientes ----------------------------------*/
+    --gradient-primary: linear-gradient(135deg, #9D1915, #F4C095);     /* Rojo → Naranja */
+    --gradient-secondary: linear-gradient(135deg, #007FB2, #F4C095);  /* Azul → Naranja */
+
+
+	--transition-speed: 0.3s;
+	--pin-size: clamp(1rem, 2vw, 2rem);
+	--tooltip-font-size: clamp(0.75rem, 1vw + 0.5rem, 1.2rem);
+
+}
+/* ESTILOS */
+body{
+    /* background: var(--primary-bg); */
+    background-color: #707070;
+}
+.map__div{
+    width: 40%;
+    margin: auto;
+}
+
+.map__div path{
+    fill: var(--tertiary-bg);
+    stroke: var(--accent-primary);
+    stroke-width: 0.2px;
+}
+/* .map__div :hover{
+    fill: var(--secondary-bg);
+} */
+
+.pin-icon {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+    position: fixed;
+    z-index: 5;
+}
+
+a:hover .pin-icon {
+    fill: var(--secondary-bg);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+
+/**/
+.icon__Name {
+	opacity: 0;
+	font-size: 10px;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+	text-anchor: middle;/**/
+    font-size: var(--tooltip-font-size);
+	font-weight: bold;
+    position: absolute;
+    z-index: 50;  
+    
+}
+
+a:hover .icon__Name {
+    fill: var(--secondary-bg);
+	opacity: 1;
+	pointer-events: auto;
+    z-index: 10;
+}
+
+
+
